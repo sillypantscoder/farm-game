@@ -1,0 +1,26 @@
+{
+	"start": 1,
+	"night": [
+		{"type": "repeat", "len": 2, "commands": [
+			{"type": "getblock", "block": 1},
+			{"type": "growpos"},
+			{"type": "set", "force": false, "block": 1}
+		]},
+		{"type": "repeat", "len": 3, "commands": [
+			{"type": "getblock", "block": 1},
+			{"type": "growpos"},
+			{"type": "set", "force": false, "block": 2}
+		]},
+		{"type": "half", "commands": [
+			{"type": "half", "commands": [
+				{"type": "half", "commands": [
+					{"type": "getblock", "block": 3},
+					{"type": "set", "force": true, "block": 4}
+				]}
+			]},
+			{"type": "getblock", "block": 1},
+			{"type": "growpos"},
+			{"type": "set", "force": false, "block": 3}
+		]}
+	]
+}

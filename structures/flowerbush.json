@@ -1,0 +1,14 @@
+{
+	"start": 2,
+	"night": [
+		{"type": "repeat", "len": 2, "commands": [
+			{"type": "getblock", "block": 2},
+			{"type": "growpos"},
+			{"type": "set", "force": false, "block": 2}
+		]},
+		{"type": "foreach", "block": 2, "commands": [
+			{"type": "growpos"},
+			{"type": "set", "force": false, "block": 3}
+		]}
+	]
+}
