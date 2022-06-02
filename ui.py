@@ -110,6 +110,19 @@ class Spacer(UIElement):
 		return r
 	def __repr__(self): return f"UIElement (Spacer)"
 
+class Divider(Spacer):
+	"""A divider. Renders as a black bar."""
+	def __init__(self, height):
+		self.height = height
+		if height < 25:
+			self.height = 25
+	def render(self, mouse, width):
+		r = pygame.Surface((width, self.height))
+		r.fill(WHITE)
+		pygame.draw.rect(r, BLACK, pygame.Rect(5, 10, width - 10, self.height - 20))
+		return r
+	def __repr__(self): return f"UIElement (Divider)"
+
 class Image(UIElement):
 	"""A UI element that displays an image."""
 	def __init__(self, image: pygame.Surface):
@@ -196,7 +209,7 @@ class Dropdown(FocasableUIElement):
 		arrow = [(padding, padding), (sol.get_height() - (padding * 2), sol.get_height() // 2), (padding, sol.get_height() - padding)]
 		if self.focused:
 			pygame.draw.rect(sol, WHITE, (5, 5, width - 10, r.get_height() + 10), 1)
-			pygame.draw.polygon(sol, WHITE, [helpers.rotateC(((sol.get_height() // 4) + (padding // 2), sol.get_height() // 2), p, 90) for p in arrow])
+			pygame.draw.polygon(sol, WHITE, [rotateC(((sol.get_height() // 4) + (padding // 2), sol.get_height() // 2), p, 90) for p in arrow])
 		else:
 			# Draw triangle
 			pygame.draw.polygon(sol, WHITE, arrow)
